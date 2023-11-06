@@ -1,11 +1,7 @@
 import { Router } from "express";
-import {
-  getUsers,
-  getUser,
-  createUser,
-  updateUser,
-  deleteUser,
-} from "../controllers/user.controller";
+import {getUsers, getUser, createUser, updateUser, deleteUser} from "../controllers/user.controller";
+import {signIn, signUp, refresh } from '../controllers/userValidate.controller'
+import passport from 'passport'
 
 const router = Router();
 
@@ -15,5 +11,11 @@ router.get("/users/:id", getUser);
 router.post("/users", createUser);
 router.put("/users/:id", updateUser);
 router.delete("/users/:id", deleteUser);
+
+//Agregar para jwt
+router.post('/signup', signUp);
+router.post('/signin', signIn);
+router.post('/token', refresh);
+
 
 export default router;

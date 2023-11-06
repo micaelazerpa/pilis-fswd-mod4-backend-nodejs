@@ -1,5 +1,6 @@
 import "reflect-metadata";
 import app from './app';
+
 import { AppDataSource } from "./db";
 const port = 3000
 
