@@ -9,7 +9,11 @@ interface UserBody {
 export const getUsers = async (req: Request, res: Response) => {
     console.log('entrando...');
     try {
-        const users = await User.find();
+        const users = await User.find({
+            relations: {
+                recipes: true
+            }
+        });
         console.log('users: --->'), users;
         return res.json(users);
     } catch (error) {
@@ -22,7 +26,11 @@ export const getUsers = async (req: Request, res: Response) => {
 export const getUser = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const user = await User.findOneBy({ id: parseInt(id) });
+        //const user = await User.findOneBy({ id: parseInt(id) });
+        const user = await User.findOne({
+            where: { id: parseInt(id) },
+            relations: ['recipes']
+        })
 
         if (!user) return res.status(404).json({ message: "User not found" });
 

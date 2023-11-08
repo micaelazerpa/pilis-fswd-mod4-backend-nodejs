@@ -12,7 +12,7 @@ let refreshTokens: (string | undefined)[] = [];
 
 const createToken = (user: User) => {
     // Se crean el jwt y refresh token
-    const token = jwt.sign({ id: user.id, email: user.email }, jwtSecret, { expiresIn: '120s' });
+    const token = jwt.sign({ id: user.id, email: user.email }, jwtSecret, { expiresIn: '2h' });
     const refreshToken = jwt.sign({ email: user.email }, jwtRefreshTokenSecret, { expiresIn: '90d' });
 
     refreshTokens.push(refreshToken);

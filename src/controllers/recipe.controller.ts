@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { Recipe } from "../entity/Recipe";
+import { User } from "../entity/User";
 
 interface UserBody {
     name: string;
@@ -38,21 +39,43 @@ export const getRecipe = async (req: Request, res: Response) => {
     }
 };
 
+export interface Payload {
+    id: number
+    email: string
+    password: string
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+}
+
 export const createRecipe = async (req: Request, res: Response) => {
     const { name, description, image, ingredients, preparation, time } = req.body; //obtengo los valores
+    const userPayload = req.user as Payload
     console.log('-------------------creando receta---------------')
     try {
-        const recipe = new Recipe();
-        recipe.name = name;
-        recipe.description = description,
-        recipe.image = image,
-        recipe.ingredients = ingredients,
-        recipe.preparation = preparation,
-        recipe.time = time
+        console.log('-------------------entro usuario---------------', req.user)
+        const user = await User.findOne({
+            where: { id: userPayload.id }
+        })
 
-        await recipe.save();
-        console.log('-------------------receta guardada---------------')
-        return res.json(recipe);
+        if (user) {
+            const recipe = new Recipe();
+            recipe.name = name;
+            recipe.description = description,
+                recipe.image = image,
+                recipe.ingredients = ingredients,
+                recipe.preparation = preparation,
+                recipe.time = time,
+                recipe.user = user
+
+            await recipe.save();
+
+            console.log('-------------------receta guardada---------------')
+
+            /* user.recipes = recipe
+            await user.save();  */
+            return res.json(recipe);
+        }
 
     } catch (error) {
         console.log('error---------------', error)

@@ -4,8 +4,9 @@ import {
     PrimaryGeneratedColumn,
     BaseEntity,
     CreateDateColumn,
-    UpdateDateColumn,
+    UpdateDateColumn, ManyToOne
 } from "typeorm";
+import { User } from "./User";
 
 @Entity() // se puede pasar como parametro el nombre de tabla ej: 'usersTable'
 
@@ -25,7 +26,7 @@ export class Recipe extends BaseEntity {
     @Column()
     ingredients: string;
 
-    @Column()
+    @Column('varchar',{length:500})
     preparation: string;
 
     @Column()
@@ -39,4 +40,7 @@ export class Recipe extends BaseEntity {
 
     @UpdateDateColumn()
     updatedAt: Date;
+
+    @ManyToOne(() => User, (user) => user.recipes)
+    user: User
 }
