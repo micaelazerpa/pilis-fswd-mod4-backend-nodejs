@@ -46,6 +46,7 @@ export interface Payload {
     active: boolean
     createdAt: Date
     updatedAt: Date
+    recipes: object
 }
 
 export const createRecipe = async (req: Request, res: Response) => {
@@ -59,6 +60,7 @@ export const createRecipe = async (req: Request, res: Response) => {
         })
 
         if (user) {
+            console.log('-------------------usuario---------------', user)
             const recipe = new Recipe();
             recipe.name = name;
             recipe.description = description,
@@ -87,14 +89,29 @@ export const createRecipe = async (req: Request, res: Response) => {
 
 export const updateRecipe = async (req: Request, res: Response) => {
     const { id } = req.params;
-
+    const userPayload = req.user as Payload
     try {
         const recipe = await Recipe.findOneBy({ id: parseInt(id) });
         if (!recipe) return res.status(404).json({ message: "Not recipe found" });
+        console.log('-------------------receta que trajo---------------', recipe)
 
-        await Recipe.update({ id: parseInt(id) }, req.body);
+        const user = await User.findOne({
+            relations: {
+                recipes: true
+            },
+            where: { id: userPayload.id }
+        })
 
-        return res.sendStatus(204);
+        console.log('-------------------usuario que quiere actualizar---------------',user)
+        const recipeFound = user?.recipes.find(item =>(item as Recipe).id== recipe.id)
+        console.log('-------------------receta encontrada---------------', recipeFound)
+        if (recipeFound){
+            await Recipe.update({ id: parseInt(id) }, req.body);
+            return res.sendStatus(204);
+        }else{
+            return res.status(404).json({ message: "Invalid user" });
+        }
+
     } catch (error) {
         if (error instanceof Error) {
             console.log('-------------------no se pudo editar--------------')
@@ -105,9 +122,11 @@ export const updateRecipe = async (req: Request, res: Response) => {
 
 export const deleteRecipe = async (req: Request, res: Response) => {
     const { id } = req.params;
+    const userPayload = req.user as Payload
     try {
         const result = await Recipe.delete({ id: parseInt(id) });
 
+        
         if (result.affected === 0)
             return res.status(404).json({ message: "Recipe not found" });
 

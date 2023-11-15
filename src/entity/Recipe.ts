@@ -23,10 +23,10 @@ export class Recipe extends BaseEntity {
     @Column()
     image: string;
 
-    @Column()
+    @Column('varchar',{length:500})
     ingredients: string;
 
-    @Column('varchar',{length:500})
+    @Column('varchar',{length:800})
     preparation: string;
 
     @Column()
