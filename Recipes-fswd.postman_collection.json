@@ -1,0 +1,356 @@
+{
+	"info": {
+		"_postman_id": "dde66dfb-2da7-4f59-ae9c-4a22def0f610",
+		"name": "Recipes-fswd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22899067"
+	},
+	"item": [
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/recipes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/recipes/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"recipes",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJmdWxhbml0b0BnbWFpbC5jb20iLCJpYXQiOjE3MDAwODY0NTksImV4cCI6MTcwMDA5MzY1OX0.NFKv3XZSkv8KSLNjAbwuW2b227wTwZe_SLJyLis28Vk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Anchi\",\r\n    \"description\": \"Esta es un postre tradicional de la provincia de Jujuy, es bastante sana y sencilla de preparar.\",\r\n    \"image\": \"https://comidas-tipicas.com/wp-content/uploads/2017/12/anchi.jpg\",\r\n    \"ingredients\": \"medio Kg de Sémola de Maíz \\n medio Kg de Azúcar \\n 2 Limones \\n 2 Naranjas \\n 1 Rama de Canela \\n 1 litro de agua\",\r\n    \"preparation\": \"Coloca la Sémola en una olla y coloca la naranja, los limones, la azúcar, las cascaras de naranja, y colocarlo a hervir. \\n En un bol de vidrio dejar enfriar y meterla en la nevera, algunos prefieren comerlo caliente esto también es válido, pero una vez estén frías esta tomara una consistencia espesa.\",\r\n    \"time\": \"01:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/recipes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwcnVlYmExQGdtYWlsLmNvbSIsImlhdCI6MTcwMDAxMTg4OSwiZXhwIjoxNzAwMDE5MDg5fQ.9zFIVae_oIbUkng4_u9RBuj-4FVoQIBIgH_1GV96yA0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Locro\",\r\n    \"description\": \"Una sopa espesa a base de maíz, carne de cerdo y chorizo\",\r\n    \"image\": \"https://statics.somosjujuy.com.ar/2021/05/634236349c0e0.jpg\",\r\n    \"ingredients\": \"1 taza de maíz blanco \\n 200g de carne de cerdo (tocino) \\n 2 chorizos \\n 1 cebolla \\n 1 pimiento rojo \\n 1 pimiento verde \\n 1 zanahoria \\n 2 papas \\n 1/2 taza de arvejas \\n 1 cucharada de pimentón dulce \\n Sal y pimienta al gusto\",\r\n    \"preparation\": \"Remoja el maíz blanco en agua durante la noche. \\n En una olla grande, hierve el maíz con la carne de cerdo y los chorizos hasta que el maíz esté tierno. \\n Agrega la cebolla, los pimientos, la zanahoria, las papas y las arvejas. Cocina hasta que las verduras estén tiernas. \\n Agrega el pimentón, sal y pimienta al gusto. \\n Sirve caliente y disfruta.\",\r\n    \"time\": \"02:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/recipes/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"recipes",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJwcnVlYmExQGdtYWlsLmNvbSIsImlhdCI6MTcwMDAxMzc2NSwiZXhwIjoxNzAwMDIwOTY1fQ.kRaHzIgQh_8baOQoljzMZy9qZCmrmQOPPLG71Rp4pwM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/recipes/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"recipes",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "JWT",
+					"item": [
+						{
+							"name": "Sign-Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"micaela@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign-In",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"fulanito@gmail.com\",\r\n    \"password\":\"cosme\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/signin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh-Token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pY2FlbGFAZ21haWwuY29tIiwiaWF0IjoxNjk5NDUxNTIxLCJleHAiOjE3MDcyMjc1MjF9.-hQec9nMdAJo3sDgBs5FNjD3dl92P-Ju5TMugcmklgk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"fulanito@gmail.com\",\r\n    \"password\":\"cosme\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/users/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
