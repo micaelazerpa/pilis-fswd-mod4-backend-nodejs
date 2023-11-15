@@ -42,7 +42,7 @@ export const getUser = async (req: Request, res: Response) => {
     }
 };
 
-export const createUser = async (req: Request, res: Response) => {
+/* export const createUser = async (req: Request, res: Response) => {
     const { email, password } = req.body; //obtengo los valores
 
     const user = new User();
@@ -70,6 +70,7 @@ export const updateUser = async (req: Request, res: Response) => {
         }
     }
 };
+ */
 
 export const deleteUser = async (req: Request, res: Response) => {
     const { id } = req.params;

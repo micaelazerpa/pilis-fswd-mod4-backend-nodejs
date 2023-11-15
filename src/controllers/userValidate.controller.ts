@@ -45,9 +45,28 @@ export const signUp = async (req: Request, res: Response): Promise<Response> => 
 
     const newUser = new User();
     newUser.email = req.body.email;
-    newUser.password = await createHash(req.body.password);;
+    newUser.password = await createHash(req.body.password);
     await newUser.save();
     return res.status(201).json(newUser);
+};
+
+export const updateUser = async (req: Request, res: Response) => {
+    const { id } = req.params;
+
+    try {
+        const user = await User.findOneBy({ id: parseInt(id) });
+        if (!user) return res.status(404).json({ message: "Not user found" });
+
+        user.email=req.body.email;
+        user.password = await createHash(req.body.password);
+
+        await User.update({ id: parseInt(id) }, user)
+        return res.sendStatus(204);
+    } catch (error) {
+        if (error instanceof Error) {
+            return res.status(500).json({ message: error.message });
+        }
+    }
 };
 
 export const signIn = async (req: Request, res: Response): Promise<Response> => {
