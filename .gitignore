@@ -1,4 +1,4 @@
 node_modules
-docker-compose
+docker-compose/mysql/mysql_data
 dist
 .env
