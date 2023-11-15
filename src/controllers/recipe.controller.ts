@@ -124,13 +124,26 @@ export const deleteRecipe = async (req: Request, res: Response) => {
     const { id } = req.params;
     const userPayload = req.user as Payload
     try {
-        const result = await Recipe.delete({ id: parseInt(id) });
+        const recipe = await Recipe.findOneBy({ id: parseInt(id) });
+        console.log('-------------------receta a eliminar---------------',recipe )
+        const user = await User.findOne({
+            relations: {
+                recipes: true
+            },
+            where: { id: userPayload.id }
+        })
+        console.log('-------------------usuario que quiere eliminar---------------',user)
+        const recipeDelete = user?.recipes.find(item =>(item as Recipe).id == recipe?.id)
+        console.log('-------------------receta encontrada---------------', recipeDelete)
+        if (recipeDelete){
+            const result = await Recipe.delete({ id: parseInt(id) });
+            if (result.affected === 0)
+                return res.status(404).json({ message: "Recipe not found" });
 
-        
-        if (result.affected === 0)
-            return res.status(404).json({ message: "Recipe not found" });
-
-        return res.sendStatus(204);
+            return res.sendStatus(204);
+        }else{
+            return res.status(404).json({ message: "Invalid user" });
+        }
     } catch (error) {
         if (error instanceof Error) {
             return res.status(500).json({ message: error.message });
