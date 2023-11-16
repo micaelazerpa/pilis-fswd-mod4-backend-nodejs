@@ -25,10 +25,10 @@ El proyecto desarrollado con NodeJS. Gestión de usuarios y gestión de recetas.
 - ***PUT -> api/recipes/:id*** - Edita una receta con el usuario propietario previamente autenticado
 - ***DELETE -> api/recipes/:id*** - Elimina una receta con el usuario propietario previamente autenticado
 
-**Nota**
+## Nota
 &nbsp;
-Usuarios registrados:
-
+**Usuarios registrados:**
+&nbsp;
 >email:fulanito@gmail.com
 &nbsp;
 password:cosme
@@ -36,3 +36,5 @@ password:cosme
 >email:micaela@gmail.com
 &nbsp;
 password:12345
+
+[url](http://localhost:3000/api/users)
