@@ -29,7 +29,7 @@ El proyecto desarrollado con NodeJS. Gestión de usuarios y gestión de recetas.
 Usuarios registrados:
 
 >email:fulanito@gmail.com
->password:cosme
+password:cosme
 
 >email:micaela@gmail.com
->password:12345
+password:12345
